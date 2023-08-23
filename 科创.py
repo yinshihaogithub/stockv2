@@ -1,5 +1,5 @@
 from wencai import wencai
-import pandas as pd
+
 from util import dingding, money_transfer
 import datetime
 

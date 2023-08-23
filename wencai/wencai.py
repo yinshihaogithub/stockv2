@@ -3,7 +3,7 @@ from typing import List
 import math
 
 import requests as rq
-import pandas as pd
+
 import time
 import logging
 import pydash as _
@@ -136,11 +136,11 @@ def get_page(**kwargs):
         data_list = _.get(result_do, path)
         return data_list
         # print(len(data_list))
-        if len(data_list) == 0:
-            log and logger.error(f'第{data.get("page")}页返回空！')
-            raise Exception("data_list is empty!")
-        log and logger.info(f'第{data.get("page")}页成功')
-        return pd.DataFrame.from_dict(data_list)
+        # if len(data_list) == 0:
+        #     log and logger.error(f'第{data.get("page")}页返回空！')
+        #     raise Exception("data_list is empty!")
+        # log and logger.info(f'第{data.get("page")}页成功')
+        # return pd.DataFrame.from_dict(data_list)
 
     result = while_do(do, retry, sleep, log)
 
@@ -170,8 +170,8 @@ def loop_page(loop, row_count, **kwargs):
         count = count + 1
         if result is None:
             result = resultPage
-        else:
-            result = pd.concat([result, resultPage], ignore_index=True)
+        # else:
+        #     result = pd.concat([result, resultPage], ignore_index=True)
 
     return result
 
